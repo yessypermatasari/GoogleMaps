@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 
 /**
@@ -48,7 +49,13 @@ public class PetaFragment extends android.support.v4.app.Fragment implements OnM
     GoogleMap map;
     boolean mapReady = false;
     MarkerOptions HotelTugu, BalaiKota, Stasiun, buckingham, williamstown, rocky, Niagara;
-
+    LatLng llHotel = new LatLng(-7.9773, 112.6329);
+    LatLng llBal = new LatLng(-7.978, 112.6338);
+    LatLng llSta = new LatLng(-7.9775, 112.637);
+    LatLng llBuck = new LatLng(37.551830, -78.554516);
+    LatLng llWill = new LatLng(42.712020, 42.712020);
+    LatLng llRicky = new LatLng(44.264300, -109.786953);
+    LatLng llNia = new LatLng(43.082816, -79.074163);
     public PetaFragment() {
         // Required empty public constructor
     }
@@ -167,5 +174,13 @@ public class PetaFragment extends android.support.v4.app.Fragment implements OnM
         LatLng Malang = new LatLng(-7.9666, 112.6326);
         CameraPosition target = CameraPosition.builder().target(Malang).zoom(14).build();
         map.moveCamera(CameraUpdateFactory.newCameraPosition(target));
+        map.addPolyline(new PolylineOptions().geodesic(true)
+                .add(llHotel)
+                .add(llBal)
+                .add(llSta)
+                .add(llBuck)
+                .add(llWill)
+                .add(llRicky)
+                .add(llNia));
     }
 }
