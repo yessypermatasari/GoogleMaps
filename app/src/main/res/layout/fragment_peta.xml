@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="id.sch.mlg.smktelkom.googlemapsudacity.PetaFragment">
+    tools:context="id.sch.mlg.smktelkom.googlemapsudacity.MainActivity$PlaceholderFragment">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -21,33 +21,73 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttnMaps"
+                android:id="@+id/btnMap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Map" />
 
             <Button
-                android:id="@+id/buttnSatelite"
+                android:id="@+id/btnSatellite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Satellite" />
 
             <Button
-                android:id="@+id/buttnHybrid"
+                android:id="@+id/btnHybrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Hybrid" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnMalang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Malang" />
+
+            <Button
+                android:id="@+id/btnKanada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kanada" />
+
+            <Button
+                android:id="@+id/btnLondon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="London" />
+
+            <Button
+                android:id="@+id/btnMelbourne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Melbourne" />
+
+
+        </LinearLayout>
+
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/maps"
+            android:id="@+id/map"
             android:name="com.google.android.gms.maps.MapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+
     </LinearLayout>
 
 </RelativeLayout>
-

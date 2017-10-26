@@ -3,6 +3,7 @@ package id.sch.mlg.smktelkom.googlemapsudacity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,8 +21,31 @@ import com.google.android.gms.maps.model.LatLng;
  */
 public class PetaFragment extends android.support.v4.app.Fragment implements OnMapReadyCallback {
 
-    GoogleMap maps;
-    boolean mapsReady = false;
+    static final CameraPosition MALANG = CameraPosition.builder().target(new LatLng(-7.9666, 112.6326))
+            .zoom(17)
+            .bearing(90)
+            .tilt(45)
+            .build();
+
+    static final CameraPosition KANADA = CameraPosition.builder().target(new LatLng(56.130366, -106.346771))
+            .zoom(21)
+            .bearing(0)
+            .tilt(45)
+            .build();
+    static final CameraPosition LONDON = CameraPosition.builder().target(new LatLng(51.507351, 51.507351))
+            .zoom(17)
+            .bearing(0)
+            .tilt(45)
+            .build();
+    static final CameraPosition MELBOURNE = CameraPosition.builder().target(new LatLng(-37.813628, 144.963058))
+            .zoom(17)
+            .bearing(90)
+            .tilt(45)
+            .build();
+
+    GoogleMap map;
+    boolean mapReady = false;
+    double latitude, longitude;
 
     public PetaFragment() {
         // Required empty public constructor
@@ -35,26 +59,58 @@ public class PetaFragment extends android.support.v4.app.Fragment implements OnM
         Button btnMap = view.findViewById(R.id.buttnMaps);
         Button btnSatellite = view.findViewById(R.id.buttnSatelite);
         Button btnHybrid = view.findViewById(R.id.buttnHybrid);
+        Button btnMalang = view.findViewById(R.id.btnMalang);
+        Button btnKanada = view.findViewById(R.id.btnKanada);
+        Button btnLondon = view.findViewById(R.id.btnLondon);
+        Button btnMel = view.findViewById(R.id.btnMelbourne);
 
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mapsReady)
-                    maps.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                if (mapReady)
+                    map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
             }
         });
         btnSatellite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mapsReady)
-                    maps.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                if (mapReady)
+                    map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
             }
         });
         btnHybrid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mapsReady)
-                    maps.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                if (mapReady)
+                    map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            }
+        });
+        btnKanada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mapReady)
+                    flyTo(KANADA);
+            }
+        });
+        btnLondon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mapReady)
+                    flyTo(LONDON);
+            }
+        });
+        btnMel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mapReady)
+                    flyTo(MELBOURNE);
+            }
+        });
+        btnMalang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mapReady)
+                    flyTo(MALANG);
             }
         });
 
@@ -64,11 +120,27 @@ public class PetaFragment extends android.support.v4.app.Fragment implements OnM
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void flyTo(CameraPosition target) {
+        map.animateCamera(CameraUpdateFactory.newCameraPosition(target), 10000, null);
+    }
+
+    @Override
     public void onMapReady(GoogleMap googleMap) {
-        mapsReady = true;
-        maps = googleMap;
-        LatLng Malang = new LatLng(-7.966620, 112.632632);
+        mapReady = true;
+        map = googleMap;
+        LatLng Malang = new LatLng(-7.9666, 112.6326);
         CameraPosition target = CameraPosition.builder().target(Malang).zoom(14).build();
-        maps.moveCamera(CameraUpdateFactory.newCameraPosition(target));
+        map.moveCamera(CameraUpdateFactory.newCameraPosition(target));
     }
 }
