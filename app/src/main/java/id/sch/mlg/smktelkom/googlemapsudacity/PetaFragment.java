@@ -1,6 +1,7 @@
 package id.sch.mlg.smktelkom.googlemapsudacity;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -182,5 +184,7 @@ public class PetaFragment extends android.support.v4.app.Fragment implements OnM
                 .add(llWill)
                 .add(llRicky)
                 .add(llNia));
+        map.addCircle(new CircleOptions().center(llBal).radius(5000).strokeColor(Color.GREEN)
+                .fillColor(Color.argb(64, 0, 255, 0)));
     }
 }
