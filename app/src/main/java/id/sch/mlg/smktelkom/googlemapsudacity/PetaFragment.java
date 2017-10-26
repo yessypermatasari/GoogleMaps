@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -57,13 +58,20 @@ public class PetaFragment extends android.support.v4.app.Fragment implements OnM
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_peta, container, false);
-        HotelTugu = new MarkerOptions().position(new LatLng(-7.9773, 112.6329)).title("Hotel Tugu");
-        BalaiKota = new MarkerOptions().position(new LatLng(-7.978, 112.6338)).title("Balai Kota Malang");
-        Stasiun = new MarkerOptions().position(new LatLng(-7.9775, 112.637)).title("Stasiun Kereta Malang");
-        buckingham = new MarkerOptions().position(new LatLng(37.551830, -78.554516)).title("Buckingham");
-        williamstown = new MarkerOptions().position(new LatLng(42.712020, 42.712020)).title("WilliamStown");
-        rocky = new MarkerOptions().position(new LatLng(44.264300, -109.786953)).title("Rocky Mountains");
-        Niagara = new MarkerOptions().position(new LatLng(43.082816, -79.074163)).title("Niagara Waterfall");
+        HotelTugu = new MarkerOptions().position(new LatLng(-7.9773, 112.6329)).title("Hotel Tugu")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+        BalaiKota = new MarkerOptions().position(new LatLng(-7.978, 112.6338)).title("Balai Kota Malang")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+        Stasiun = new MarkerOptions().position(new LatLng(-7.9775, 112.637)).title("Stasiun Kereta Malang")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+        buckingham = new MarkerOptions().position(new LatLng(37.551830, -78.554516)).title("Buckingham")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+        williamstown = new MarkerOptions().position(new LatLng(42.712020, 42.712020)).title("WilliamStown")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+        rocky = new MarkerOptions().position(new LatLng(44.264300, -109.786953)).title("Rocky Mountains")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+        Niagara = new MarkerOptions().position(new LatLng(43.082816, -79.074163)).title("Niagara Waterfall")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
 
         Button btnMap = view.findViewById(R.id.buttnMaps);
         Button btnSatellite = view.findViewById(R.id.buttnSatelite);
