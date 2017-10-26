@@ -4,7 +4,6 @@ package id.sch.mlg.smktelkom.googlemapsudacity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -83,8 +82,8 @@ public class PetaFragment extends android.support.v4.app.Fragment implements OnM
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
 
         Button btnMap = view.findViewById(R.id.buttnMaps);
-        Button btnSatellite = view.findViewById(R.id.buttnSatelite);
-        Button btnHybrid = view.findViewById(R.id.buttnHybrid);
+        Button btnSatellite = view.findViewById(R.id.buttSatellite);
+        Button btnHybrid = view.findViewById(R.id.buttHybrid);
         Button btnMalang = view.findViewById(R.id.btnMalang);
         Button btnKanada = view.findViewById(R.id.btnKanada);
         Button btnLondon = view.findViewById(R.id.btnLondon);
@@ -140,22 +139,11 @@ public class PetaFragment extends android.support.v4.app.Fragment implements OnM
             }
         });
 
-        MapFragment mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.maps);
+        MapFragment mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         return view;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     private void flyTo(CameraPosition target) {
         map.animateCamera(CameraUpdateFactory.newCameraPosition(target), 10000, null);
